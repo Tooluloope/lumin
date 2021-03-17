@@ -9,6 +9,8 @@ import {
 	DrawerCloseButton,
 	DrawerFooter,
 	Button,
+	Flex,
+	Select,
 } from '@chakra-ui/react';
 
 import { CartItem } from '../CartItem';
@@ -20,8 +22,8 @@ const Cart = ({ onOpen, isOpen, onClose }) => {
 			<DrawerOverlay>
 				<DrawerContent bg="rgb(242, 242, 239)">
 					<DrawerCloseButton
-						top="30px"
-						left={10}
+						top="20px"
+						left={6}
 						border="1px solid rgb(198, 204, 199)"
 						w="1.5rem"
 						h="1.5rem"
@@ -42,20 +44,88 @@ const Cart = ({ onOpen, isOpen, onClose }) => {
 							/>
 						</Box>
 					</DrawerCloseButton>
-					<DrawerHeader display="flex" justifyContent="center" alignItems="center">
+					<DrawerHeader textAlign="center">
 						<Text> Your Cart</Text>
+						<Select
+							border="0px solid #ACAFAD"
+							borderRadius={0}
+							w="80px"
+							h="28px"
+							fontSize="12px"
+							bg="white"
+							mt={2}
+						>
+							<option>NGN</option>
+						</Select>
 					</DrawerHeader>
-					<DrawerBody pt={10} pl={10}>
+					<DrawerBody>
 						<CartItem />
 						<CartItem />
 						<CartItem />
 						<CartItem />
 					</DrawerBody>
-					<DrawerFooter>
-						<Button variant="outline" mr={3} onClick={onClose}>
-							Cancel
+					<DrawerFooter
+						display="block"
+						borderTop="1px solid #d0d0d0"
+						boxShadow="0 -4px 12px rgb(0 0 0 / 15%)"
+					>
+						<Flex justify="space-between">
+							<Text>Subtotal</Text>
+							<Box fontSize={{ base: '13px', md: '16px' }}>
+								<Text as="span" mr={1}>
+									NGN
+								</Text>
+								28,000.00
+							</Box>
+						</Flex>
+
+						<Button
+							onClick={onOpen}
+							h="50px"
+							bg="white"
+							fontWeight="normal"
+							border="1px solid"
+							borderColor="brand.100"
+							w={{ base: 'full', lg: '60%' }}
+							color="brand.100"
+							borderRadius={0}
+							mx="auto"
+							textTransform="uppercase"
+							mt={10}
+							_hover={{
+								background: 'white',
+							}}
+							_active={{
+								background: 'white',
+							}}
+							letterSpacing="0.2rem"
+							fontSize={{ base: '12px', md: '12px' }}
+						>
+							Proceed to checkout
 						</Button>
-						<Button color="blue">Save</Button>
+
+						<Button
+							onClick={onOpen}
+							mt={15}
+							h="50px"
+							bg="brand.100"
+							fontWeight="normal"
+							w={{ base: 'full', lg: '60%' }}
+							color="rgb(252, 252, 249)"
+							borderRadius={0}
+							mx="auto"
+							textTransform="uppercase"
+							_hover={{
+								background: 'brand.500',
+							}}
+							_active={{
+								background: 'brand.500',
+							}}
+							letterSpacing="0.2rem"
+							fontSize={{ base: '12px', md: '12px' }}
+						>
+							Proceed to checkout
+						</Button>
 					</DrawerFooter>
 				</DrawerContent>
 			</DrawerOverlay>

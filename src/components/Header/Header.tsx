@@ -66,6 +66,7 @@ const Header = () => {
 			<Box
 				ref={navbar}
 				as="nav"
+				zIndex={1}
 				pos={isVisible ? 'fixed' : 'absolute'}
 				top="0"
 				left="0"
@@ -161,7 +162,7 @@ const Header = () => {
 				</Box>
 			</Box>
 
-			<Drawer placement="left" onClose={onClose} isOpen={isOpen} size="full">
+			<Drawer placement="left" onClose={onClose} isOpen={isOpen} size="md">
 				<DrawerOverlay>
 					<DrawerContent bg="rgb(242, 242, 239)" pt={10}>
 						<DrawerCloseButton
