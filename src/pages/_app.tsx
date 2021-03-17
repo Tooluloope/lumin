@@ -20,6 +20,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 				200: ' #f5f5f4',
 				300: '#ACAFAD',
 				400: '#e2e6e3',
+				500: 'rgb(43, 46, 43)',
 			},
 		},
 	});

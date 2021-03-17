@@ -1,3 +1,4 @@
+import { ProductItem } from '@/components';
 import { Box, Container, Grid, Select, Text } from '@chakra-ui/react';
 import Head from 'next/head';
 
@@ -37,19 +38,22 @@ export default function Home() {
 					<option>Filter By</option>
 				</Select>
 			</Container>
-			<Box bg="brand.400">
-				<Container maxW="6xl" px={10} height="100vh">
-					<Grid templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }} gap={6}>
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
-						<Box w="100%" h="10" bg="blue.500" />
+			<Box bg="brand.400" py={16}>
+				<Container maxW="6xl" px={5}>
+					<Grid
+						templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
+						gap={{ base: 3, md: 6, lg: 9 }}
+					>
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
+						<ProductItem />
 					</Grid>
 				</Container>
 			</Box>
