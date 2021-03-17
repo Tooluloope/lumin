@@ -1,3 +1,4 @@
+import { TDrawer } from '@/types';
 import {
 	Box,
 	Text,
@@ -15,7 +16,7 @@ import {
 
 import { CartItem } from '../CartItem';
 
-const Cart = ({ onOpen, isOpen, onClose }) => {
+const Cart = ({ onOpen, isOpen, onClose }: Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'>) => {
 	const b = '';
 	return (
 		<Drawer placement="right" onClose={onClose} isOpen={isOpen} size="lg">

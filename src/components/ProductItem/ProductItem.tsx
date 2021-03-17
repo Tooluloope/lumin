@@ -1,11 +1,11 @@
+import { TDrawer } from '@/types';
 import { Box, Image, Link, VStack, Text, Flex, Button } from '@chakra-ui/react';
 
-const ProductItem = ({ onOpen }) => (
+const ProductItem = ({ onOpen }: Pick<TDrawer, 'onOpen'>) => (
 	<VStack
 		spacing={4}
 		align="stretch"
 		fontSize={{ base: '13px', md: '16px' }}
-		// maxW={{ base: 'full', lg: '245px' }}
 		mx="auto"
 		textAlign="center"
 	>
