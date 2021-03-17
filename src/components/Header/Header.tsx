@@ -217,6 +217,7 @@ const Header = () => {
 								border="0px"
 								color="black"
 								fontSize="22.4px"
+								fontFamily="freight-display-pro,serif"
 							>
 								Skin
 							</Link>
@@ -227,6 +228,7 @@ const Header = () => {
 								border="0px"
 								color="black"
 								fontSize="22.4px"
+								fontFamily="freight-display-pro,serif"
 							>
 								Hair & Body
 							</Link>
@@ -237,6 +239,7 @@ const Header = () => {
 								border="0px"
 								color="black"
 								fontSize="22.4px"
+								fontFamily="freight-display-pro,serif"
 							>
 								Sets
 							</Link>
@@ -247,6 +250,7 @@ const Header = () => {
 								border="0px"
 								color="black"
 								fontSize="22.4px"
+								fontFamily="freight-display-pro,serif"
 							>
 								Accessories
 							</Link>
@@ -257,6 +261,7 @@ const Header = () => {
 								border="0px"
 								color="black"
 								fontSize="22.4px"
+								fontFamily="freight-display-pro,serif"
 							>
 								Shop All
 							</Link>

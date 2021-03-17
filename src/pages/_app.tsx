@@ -23,6 +23,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 				500: 'rgb(43, 46, 43)',
 			},
 		},
+		fonts: {
+			body: '"FF Bau Regular", sans-serif',
+		},
 	});
 	return (
 		<ChakraProvider theme={{ ...theme, breakpoints }}>

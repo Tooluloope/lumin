@@ -1,62 +1,71 @@
-import { ProductItem } from '@/components';
-import { Box, Container, Grid, Select, Text } from '@chakra-ui/react';
+import { Cart, ProductItem } from '@/components';
+import { Box, Container, Grid, Select, Text, useDisclosure } from '@chakra-ui/react';
 import Head from 'next/head';
 
 export default function Home() {
+	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	return (
-		<Box py="64px" bg="brand.200">
-			<Head>
-				<title>Products | Lumin Skincare</title>
-				<link rel="icon" href="/favicon.png" />
-			</Head>
-			<Container
-				maxW="7xl"
-				mx="auto"
-				py={{ base: 10, md: '16', lg: 20 }}
-				px={10}
-				display={{ base: 'block', lg: 'flex' }}
-				justifyContent="space-between"
-				alignItems="center"
-			>
-				<Box mb={{ base: '1.5rem', lg: '0px' }}>
-					<Text as="h1" fontSize={{ base: '24px', md: '32px', lg: '48px' }}>
-						All Products
-					</Text>
-					<Text mt={{ base: '0.5rem', md: '0.75rem' }} fontSize={{ base: '13px', md: '16px' }}>
-						A 360° look at Lumin
-					</Text>
-				</Box>
-				<Select
-					border="1px solid #ACAFAD"
-					borderColor="brand.300"
-					borderRadius={0}
-					w={{ base: 'block', lg: '400px' }}
-					h="50px"
-					fontSize="1rem"
-					bg="white"
+		<>
+			<Box py="64px" bg="brand.200">
+				<Head>
+					<title>Products | Lumin Skincare</title>
+					<link rel="icon" href="/favicon.png" />
+				</Head>
+				<Container
+					maxW="7xl"
+					mx="auto"
+					py={{ base: 10, md: '16', lg: 20 }}
+					px={10}
+					display={{ base: 'block', lg: 'flex' }}
+					justifyContent="space-between"
+					alignItems="center"
 				>
-					<option>Filter By</option>
-				</Select>
-			</Container>
-			<Box bg="brand.400" py={16}>
-				<Container maxW="6xl" px={5}>
-					<Grid
-						templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
-						gap={{ base: 3, md: 6, lg: 9 }}
+					<Box mb={{ base: '1.5rem', lg: '0px' }}>
+						<Text
+							as="h1"
+							fontSize={{ base: '24px', md: '32px', lg: '48px' }}
+							fontFamily="freight-display-pro,serif"
+						>
+							All Products
+						</Text>
+						<Text mt={{ base: '0.5rem', md: '0.75rem' }} fontSize={{ base: '13px', md: '16px' }}>
+							A 360° look at Lumin
+						</Text>
+					</Box>
+					<Select
+						border="1px solid #ACAFAD"
+						borderColor="brand.300"
+						borderRadius={0}
+						w={{ base: 'block', lg: '400px' }}
+						h="50px"
+						fontSize="1rem"
+						bg="white"
 					>
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-						<ProductItem />
-					</Grid>
+						<option>Filter By</option>
+					</Select>
 				</Container>
+				<Box bg="brand.400" py={16}>
+					<Container maxW="6xl" px={5}>
+						<Grid
+							templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
+							gap={{ base: 3, md: 6, lg: 9 }}
+						>
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+							<ProductItem onOpen={onOpen} />
+						</Grid>
+					</Container>
+				</Box>
 			</Box>
-		</Box>
+			<Cart onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
+		</>
 	);
 }
