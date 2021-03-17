@@ -7,6 +7,8 @@ import {
 	DrawerOverlay,
 	DrawerContent,
 	DrawerCloseButton,
+	DrawerFooter,
+	Button,
 } from '@chakra-ui/react';
 
 import { CartItem } from '../CartItem';
@@ -49,6 +51,12 @@ const Cart = ({ onOpen, isOpen, onClose }) => {
 						<CartItem />
 						<CartItem />
 					</DrawerBody>
+					<DrawerFooter>
+						<Button variant="outline" mr={3} onClick={onClose}>
+							Cancel
+						</Button>
+						<Button color="blue">Save</Button>
+					</DrawerFooter>
 				</DrawerContent>
 			</DrawerOverlay>
 		</Drawer>
