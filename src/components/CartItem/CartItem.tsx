@@ -10,17 +10,17 @@ const CartItem = () => (
 			mx="auto"
 			textAlign="left"
 		>
-			<Text as="h6" fontSize={{ base: '13px', md: '16px' }}>
+			<Text as="h6" fontSize={{ base: '13px' }}>
 				Modern Bathroom Set
 			</Text>
-			<Box fontSize={{ base: '10px', md: '16px' }}>
+			<Box fontSize={{ base: '10px' }}>
 				<Text as="span" fontFamily="FF Bau Medium,san-serif" fontWeight="bold" mr={1}>
 					MADE FOR:
 				</Text>
 				Bathroom Set
 			</Box>
-			<Text fontSize={{ base: '10px', md: '16px' }}>Dry | 25-34</Text>
-			<Text fontSize={{ base: '10px', md: '16px' }}>One time purchase of Two Month supply.</Text>
+			<Text fontSize={{ base: '10px' }}>Dry | 25-34</Text>
+			<Text fontSize={{ base: '10px' }}>One time purchase of Two Month supply.</Text>
 			<Box>
 				<HStack align="center" justifyContent="space-between" mt={3}>
 					<HStack border="1px solid" borderColor="brand.300" py={1} px={2}>
@@ -30,7 +30,7 @@ const CartItem = () => (
 						</Text>
 						<Text as="span">+</Text>
 					</HStack>
-					<Box fontSize={{ base: '13px', md: '16px' }}>
+					<Box fontSize={{ base: '13px' }}>
 						<Text as="span" mr={1}>
 							NGN
 						</Text>

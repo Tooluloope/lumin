@@ -68,6 +68,7 @@ const Cart = ({ onOpen, isOpen, onClose }) => {
 						display="block"
 						borderTop="1px solid #d0d0d0"
 						boxShadow="0 -4px 12px rgb(0 0 0 / 15%)"
+						py={10}
 					>
 						<Flex justify="space-between">
 							<Text>Subtotal</Text>
@@ -86,7 +87,7 @@ const Cart = ({ onOpen, isOpen, onClose }) => {
 							fontWeight="normal"
 							border="1px solid"
 							borderColor="brand.100"
-							w={{ base: 'full', lg: '60%' }}
+							w="full"
 							color="brand.100"
 							borderRadius={0}
 							mx="auto"
@@ -110,7 +111,7 @@ const Cart = ({ onOpen, isOpen, onClose }) => {
 							h="50px"
 							bg="brand.100"
 							fontWeight="normal"
-							w={{ base: 'full', lg: '60%' }}
+							w="full"
 							color="rgb(252, 252, 249)"
 							borderRadius={0}
 							mx="auto"
