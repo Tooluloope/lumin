@@ -12,15 +12,21 @@ import {
 	Button,
 	Flex,
 	Select,
+	useBreakpointValue,
 } from '@chakra-ui/react';
 
 import { CartItem } from '../CartItem';
 
 const Cart = ({ onOpen, isOpen, onClose }: Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'>) => {
-	const b = '';
+	const variant = useBreakpointValue({ base: 'md', lg: 'lg' });
 	return (
-		<Drawer placement="right" onClose={onClose} isOpen={isOpen} size="lg">
-			<DrawerOverlay>
+		<Drawer placement="right" onClose={onClose} isOpen={isOpen} size={variant}>
+			<DrawerOverlay
+				style={{
+					backdropFilter: 'blur(3px)',
+				}}
+				bg="rgba(205, 209, 206,0.8)"
+			>
 				<DrawerContent bg="rgb(242, 242, 239)">
 					<DrawerCloseButton
 						top="20px"

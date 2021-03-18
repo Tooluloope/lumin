@@ -1,9 +1,25 @@
-import { Cart, ProductItem } from '@/components';
-import { Box, Container, Grid, Select, Text, useDisclosure } from '@chakra-ui/react';
+import { Cart, ProductItem, ProductLoader } from '@/components';
+import { ALL_PRODUCTS } from '@/queries';
+import { useQuery } from '@apollo/client';
+import {
+	Box,
+	Container,
+	Grid,
+	Select,
+	Text,
+	useBreakpointValue,
+	useDisclosure,
+} from '@chakra-ui/react';
 import Head from 'next/head';
+import { Currency, TProduct } from '../types/index';
 
 export default function Home() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { loading, error, data } = useQuery<{ products: TProduct[]; currency: Currency }>(
+		ALL_PRODUCTS,
+		{ variables: { currency: Currency.NGN } },
+	);
+	const variant = useBreakpointValue({ base: true, md: false });
 
 	return (
 		<>
@@ -49,18 +65,24 @@ export default function Home() {
 					<Container maxW="6xl" px={5}>
 						<Grid
 							templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }}
-							gap={{ base: 3, md: 6, lg: 9 }}
+							gridColumnGap={{ base: 3, md: 6, lg: 9 }}
+							gridRowGap="28"
 						>
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
-							<ProductItem onOpen={onOpen} />
+							{loading || error ? (
+								<>
+									<ProductLoader />
+									<ProductLoader />
+									<ProductLoader />
+									{variant && <ProductLoader />}
+								</>
+							) : (
+								<>
+									{data &&
+										data.products.map((product) => (
+											<ProductItem product={product} key={product.id} onOpen={onOpen} />
+										))}
+								</>
+							)}
 						</Grid>
 					</Container>
 				</Box>

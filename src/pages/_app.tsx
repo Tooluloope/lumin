@@ -3,6 +3,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 import '@/styles/global.css';
 import { Header } from '@/components';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	const breakpoints = createBreakpoints({
@@ -10,7 +11,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 		md: '768px',
 		lg: '992px',
 		xl: '1440px',
-		'2xl': '96em',
+		'2xl': '1536px',
 	});
 
 	const theme = extendTheme({
@@ -27,10 +28,18 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 			body: '"FF Bau Regular", sans-serif',
 		},
 	});
+
+	const client = new ApolloClient({
+		uri: 'https://pangaea-interviews.now.sh/api/graphql',
+		cache: new InMemoryCache(),
+	});
+
 	return (
 		<ChakraProvider theme={{ ...theme, breakpoints }}>
-			<Header />
-			<Component {...pageProps} />
+			<ApolloProvider client={client}>
+				<Header />
+				<Component {...pageProps} />
+			</ApolloProvider>
 		</ChakraProvider>
 	);
 }

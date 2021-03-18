@@ -1,23 +1,37 @@
-import { TDrawer } from '@/types';
+import { TDrawer, TProduct } from '@/types';
 import { Box, Image, Link, VStack, Text, Flex, Button } from '@chakra-ui/react';
 
-const ProductItem = ({ onOpen }: Pick<TDrawer, 'onOpen'>) => (
+type TProductItem = Pick<TDrawer, 'onOpen'> & {
+	product: TProduct;
+};
+
+const ProductItem = ({ onOpen, product }: TProductItem) => (
 	<VStack
 		spacing={4}
 		align="stretch"
 		fontSize={{ base: '13px', md: '16px' }}
 		mx="auto"
 		textAlign="center"
+		w="full"
 	>
-		<Box>
-			<Link display="flex" flexDir="column" alignItems="center" justifyContent="center">
-				<Image src="https://cdn.shopify.com/s/files/1/2960/5204/products/classic-maintenance_1024x1024_1_1024x1024.png?v=1602810560" />
-				<Text as="h2">Classic Maintenance Set</Text>
+		<Box mx="auto" w={{ base: 'full', lg: '80%' }} height="170px">
+			<Link h="full" display="flex" flexDir="column" alignItems="center" justifyContent="center">
+				<Image
+					// flex="1 1 0%"
+					maxW="100%"
+					objectFit="contain"
+					maxHeight="150px"
+					src={product.image_url}
+				/>
+				<Text mt={5} as="h2">
+					{product.title}
+				</Text>
 			</Link>
 		</Box>
+
 		<Flex alignItems="center" justifyContent="center">
 			<Text mr={1}>From:</Text>
-			<Text>NGN&nbsp;18,400.00</Text>
+			<Text>NGN&nbsp;{product.price}</Text>
 		</Flex>
 		<Flex alignItems="center" justifyContent="center">
 			<Button
