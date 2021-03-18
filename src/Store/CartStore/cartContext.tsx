@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { cartItem } from './types';
+import { getInitialState } from '../../utils/helpers';
 
 const CartContext = React.createContext<{
 	cart: cartItem[];

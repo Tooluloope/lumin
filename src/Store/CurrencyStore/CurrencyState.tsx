@@ -1,15 +1,20 @@
 import { Currency } from '@/types';
-import React, { useReducer } from 'react';
+import { getInitialState, persistState } from '@/utils/helpers';
+import React, { useEffect, useReducer } from 'react';
+import { STORAGE_KEY } from '..';
 import CurrencyContext from './CurrencyContext';
 import { currencyReducer } from './reducer';
 import { CURRENCY_ACTION } from './types';
 
 const CurrencyState: React.FC = ({ children }) => {
-	const [currencyState, dispatch] = useReducer(currencyReducer, { currency: Currency.USD });
+	const currency = (getInitialState(STORAGE_KEY.CURRENCY) ?? Currency.USD) as Currency;
 
-	const changeCurrency = (currency: Currency) => {
-		dispatch({ type: CURRENCY_ACTION.CHANGE_CURRENCY, currency });
+	const [currencyState, dispatch] = useReducer(currencyReducer, { currency });
+
+	const changeCurrency = (curr: Currency) => {
+		dispatch({ type: CURRENCY_ACTION.CHANGE_CURRENCY, currency: curr });
 	};
+	useEffect(() => persistState(STORAGE_KEY.CURRENCY, currencyState.currency), [currencyState]);
 
 	return (
 		<CurrencyContext.Provider
