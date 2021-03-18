@@ -4,6 +4,7 @@ import { createBreakpoints } from '@chakra-ui/theme-tools';
 import '@/styles/global.css';
 import { Header } from '@/components';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { CartState } from '@/Store';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	const breakpoints = createBreakpoints({
@@ -37,8 +38,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ChakraProvider theme={{ ...theme, breakpoints }}>
 			<ApolloProvider client={client}>
-				<Header />
-				<Component {...pageProps} />
+				<CartState>
+					<Header />
+					<Component {...pageProps} />
+				</CartState>
 			</ApolloProvider>
 		</ChakraProvider>
 	);

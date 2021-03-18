@@ -1,4 +1,6 @@
-import { TDrawer } from '@/types';
+import CartContext from '@/Store/CartStore/cartContext';
+import { cartItem } from '@/Store/CartStore/types';
+import { Currency, TDrawer, TProduct } from '@/types';
 import {
 	Box,
 	Text,
@@ -14,11 +16,37 @@ import {
 	Select,
 	useBreakpointValue,
 } from '@chakra-ui/react';
+import { useContext, useMemo } from 'react';
 
 import { CartItem } from '../CartItem';
 
-const Cart = ({ onOpen, isOpen, onClose }: Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'>) => {
+type TCart = Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'> & {
+	data:
+		| {
+				products: TProduct[];
+				currency: Currency;
+		  }
+		| undefined;
+};
+
+const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 	const variant = useBreakpointValue({ base: 'md', lg: 'lg' });
+	const { cart } = useContext(CartContext);
+	const productData = useMemo(() => data?.products, [data]);
+	const cartData = useMemo(() => cart, [cart]);
+
+	const filterObjsInArr = useMemo(() => {
+		const filteredArray: cartItem[] = [];
+		productData?.forEach((obj) => {
+			cartData.forEach((item) => {
+				if (item.productId === obj.id) {
+					filteredArray.push({ ...item, ...obj });
+				}
+			});
+		});
+		return filteredArray;
+	}, [productData, cartData]);
+
 	return (
 		<Drawer placement="right" onClose={onClose} isOpen={isOpen} size={variant}>
 			<DrawerOverlay
@@ -66,10 +94,17 @@ const Cart = ({ onOpen, isOpen, onClose }: Pick<TDrawer, 'onOpen' | 'isOpen' | '
 						</Select>
 					</DrawerHeader>
 					<DrawerBody>
+						{filterObjsInArr && filterObjsInArr.length > 0 ? (
+							<>
+								{filterObjsInArr.map((filteredData) => (
+									<CartItem data={filteredData} />
+								))}
+							</>
+						) : null}
+
+						{/* <CartItem />
 						<CartItem />
-						<CartItem />
-						<CartItem />
-						<CartItem />
+						<CartItem /> */}
 					</DrawerBody>
 					<DrawerFooter
 						display="block"

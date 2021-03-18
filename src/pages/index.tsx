@@ -15,6 +15,7 @@ import { Currency, TProduct } from '../types/index';
 
 export default function Home() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	const { loading, error, data } = useQuery<{ products: TProduct[]; currency: Currency }>(
 		ALL_PRODUCTS,
 		{ variables: { currency: Currency.NGN } },
@@ -87,7 +88,7 @@ export default function Home() {
 					</Container>
 				</Box>
 			</Box>
-			<Cart onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
+			<Cart data={data} onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
 		</>
 	);
 }
