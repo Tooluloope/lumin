@@ -17,8 +17,15 @@ const CartState: React.FC = ({ children }) => {
 	const removeProductFromCart = (productId: number) => {
 		dispatch({ type: CART_ACTION.REMOVE_PRODUCT, productId });
 	};
+	const removeProductTotallyFromCart = (productId: number) => {
+		dispatch({ type: CART_ACTION.REMOVE_PRODUCT_TOTALLY, productId });
+	};
 	const totalQuantity = cartState.cart.reduce((prev, cur) => prev + Number(cur.quantity), 0);
 
+	const subTotal = cartState.cart.reduce((prev, cur) => {
+		console.log(Number(cur.quantity ?? 0), Number(cur.price), prev);
+		return prev + Number(cur.quantity ?? 0) * Number(cur.price ?? 0);
+	}, 1);
 	useEffect(() => persistState(STORAGE_KEY.CART, cartState.cart), [cartState]);
 
 	return (
@@ -27,7 +34,9 @@ const CartState: React.FC = ({ children }) => {
 				cart: cartState.cart,
 				addProductToCart,
 				removeProductFromCart,
+				removeProductTotallyFromCart,
 				totalQuantity,
+				subTotal,
 			}}
 		>
 			{children}

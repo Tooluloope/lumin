@@ -1,4 +1,4 @@
-import { Cart, ProductItem, ProductLoader } from '@/components';
+import { Cart, ProductItem, ProductLoader, Header } from '@/components';
 import { ALL_PRODUCTS } from '@/queries';
 import CurrencyContext from '@/Store/CurrencyStore/CurrencyContext';
 import { useQuery } from '@apollo/client';
@@ -12,7 +12,7 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { TProduct } from '../types/index';
 
 export default function Home() {
@@ -22,15 +22,25 @@ export default function Home() {
 	const { loading, error, data } = useQuery<{ products: TProduct[] }>(ALL_PRODUCTS, {
 		variables: { currency },
 	});
+
+	const [productData, setProductData] = useState<{ products: TProduct[] }>({ products: [] });
+
+	useEffect(() => {
+		if (data && data.products) {
+			setProductData(data);
+		}
+	}, [data]);
 	const variant = useBreakpointValue({ base: true, md: false });
 
 	return (
 		<>
+			<Header cartOnOpen={onOpen} />
 			<Box py="64px" bg="brand.200">
 				<Head>
 					<title>Products | Lumin Skincare</title>
 					<link rel="icon" href="/favicon.png" />
 				</Head>
+
 				<Container
 					maxW="7xl"
 					mx="auto"
@@ -71,7 +81,7 @@ export default function Home() {
 							gridColumnGap={{ base: 3, md: 6, lg: 9 }}
 							gridRowGap="28"
 						>
-							{loading || error ? (
+							{(loading || error) && productData.products.length < 1 ? (
 								<>
 									<ProductLoader />
 									<ProductLoader />
@@ -80,8 +90,8 @@ export default function Home() {
 								</>
 							) : (
 								<>
-									{data &&
-										data.products.map((product) => (
+									{productData &&
+										productData.products.map((product) => (
 											<ProductItem product={product} key={product.id} onOpen={onOpen} />
 										))}
 								</>
@@ -90,7 +100,7 @@ export default function Home() {
 					</Container>
 				</Box>
 			</Box>
-			<Cart data={data} onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
+			<Cart data={productData} onOpen={onOpen} isOpen={isOpen} onClose={onClose} />
 		</>
 	);
 }

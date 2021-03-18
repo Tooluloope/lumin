@@ -33,6 +33,15 @@ const removeProductFromCart = (productId: number, state: State) => {
 
 	return { ...state, cart: updatedCart };
 };
+const removeProductTotallyFromCart = (productId: number, state: State) => {
+	const updatedCart = [...state.cart];
+	const updatedItemIndex = updatedCart.findIndex((item) => item.productId === productId);
+	if (updatedItemIndex >= 0) {
+		updatedCart.splice(updatedItemIndex, 1);
+	}
+
+	return { ...state, cart: updatedCart };
+};
 
 export const cartReducer = (state: State, action: Action) => {
 	switch (action.type) {
@@ -41,6 +50,8 @@ export const cartReducer = (state: State, action: Action) => {
 
 		case CART_ACTION.REMOVE_PRODUCT:
 			return removeProductFromCart(action.productId, state);
+		case CART_ACTION.REMOVE_PRODUCT_TOTALLY:
+			return removeProductTotallyFromCart(action.productId, state);
 
 		default:
 			return state;

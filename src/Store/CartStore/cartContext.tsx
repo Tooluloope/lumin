@@ -7,7 +7,10 @@ const CartContext = React.createContext<{
 	cart: cartItem[];
 	addProductToCart: (productId: number) => void;
 	removeProductFromCart: (productId: number) => void;
+	removeProductTotallyFromCart: (productId: number) => void;
+
 	totalQuantity: number;
+	subTotal: number;
 }>({
 	cart: [],
 	addProductToCart(productId) {
@@ -16,7 +19,11 @@ const CartContext = React.createContext<{
 	removeProductFromCart(productId) {
 		// do nothing.
 	},
+	removeProductTotallyFromCart(productId) {
+		// do nothing.
+	},
 	totalQuantity: 0,
+	subTotal: 0,
 });
 
 export default CartContext;

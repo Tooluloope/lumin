@@ -17,7 +17,7 @@ import {
 import { useContext, useEffect, useRef, useState } from 'react';
 import CartContext from '@/Store/CartStore/cartContext';
 
-const Header = () => {
+const Header = ({ cartOnOpen }: { cartOnOpen: () => void }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const { totalQuantity } = useContext(CartContext);
 
@@ -133,6 +133,7 @@ const Header = () => {
 						Account
 					</Link>
 					<Button
+						onClick={cartOnOpen}
 						_hover={{
 							bg: 'transparent',
 							color: 'black',

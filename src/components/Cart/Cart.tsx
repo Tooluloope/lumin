@@ -32,7 +32,7 @@ type TCart = Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'> & {
 const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 	const keys = Object.keys(Currency);
 	const variant = useBreakpointValue({ base: 'md', lg: 'lg' });
-	const { cart } = useContext(CartContext);
+	const { cart, subTotal } = useContext(CartContext);
 	const { currency, changeCurrency } = useContext(CurrencyContext);
 
 	const productData = useMemo(() => data?.products, [data]);
@@ -109,7 +109,9 @@ const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 									<CartItem key={filteredData.id} data={filteredData} />
 								))}
 							</>
-						) : null}
+						) : (
+							<Text textAlign="center">There are no items in your cart.</Text>
+						)}
 
 						{/* <CartItem />
 						<CartItem />
@@ -125,9 +127,9 @@ const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 							<Text>Subtotal</Text>
 							<Box fontSize={{ base: '13px', md: '16px' }}>
 								<Text as="span" mr={1}>
-									NGN
+									{currency}
 								</Text>
-								28,000.00
+								{subTotal}
 							</Box>
 						</Flex>
 

@@ -2,7 +2,6 @@ import { AppProps } from 'next/app';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 import '@/styles/global.css';
-import { Header } from '@/components';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { CartState, CurrencyState } from '@/Store';
 
@@ -40,7 +39,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 			<ApolloProvider client={client}>
 				<CartState>
 					<CurrencyState>
-						<Header />
 						<Component {...pageProps} />
 					</CurrencyState>
 				</CartState>
