@@ -10,7 +10,6 @@ const CartContext = React.createContext<{
 	removeProductTotallyFromCart: (productId: number) => void;
 
 	totalQuantity: number;
-	subTotal: number;
 }>({
 	cart: [],
 	addProductToCart(productId) {
@@ -23,7 +22,6 @@ const CartContext = React.createContext<{
 		// do nothing.
 	},
 	totalQuantity: 0,
-	subTotal: 0,
 });
 
 export default CartContext;

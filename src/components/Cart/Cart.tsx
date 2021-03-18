@@ -32,13 +32,13 @@ type TCart = Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'> & {
 const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 	const keys = Object.keys(Currency);
 	const variant = useBreakpointValue({ base: 'md', lg: 'lg' });
-	const { cart, subTotal } = useContext(CartContext);
+	const { cart } = useContext(CartContext);
 	const { currency, changeCurrency } = useContext(CurrencyContext);
 
 	const productData = useMemo(() => data?.products, [data]);
 	const cartData = useMemo(() => cart, [cart]);
 
-	const filterObjsInArr = useMemo(() => {
+	const filterCartItemsInProduct = useMemo(() => {
 		const filteredArray: cartItem[] = [];
 		productData?.forEach((obj) => {
 			cartData.forEach((item) => {
@@ -49,6 +49,11 @@ const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 		});
 		return filteredArray;
 	}, [productData, cartData]);
+
+	const subTotal = filterCartItemsInProduct.reduce(
+		(prev, cur) => prev + Number(cur.quantity ?? 0) * Number(cur.price ?? 0),
+		0,
+	);
 
 	return (
 		<Drawer placement="right" onClose={onClose} isOpen={isOpen} size={variant}>
@@ -103,9 +108,9 @@ const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 						</Select>
 					</DrawerHeader>
 					<DrawerBody>
-						{filterObjsInArr && filterObjsInArr.length > 0 ? (
+						{filterCartItemsInProduct && filterCartItemsInProduct.length > 0 ? (
 							<>
-								{filterObjsInArr.map((filteredData) => (
+								{filterCartItemsInProduct.map((filteredData) => (
 									<CartItem key={filteredData.id} data={filteredData} />
 								))}
 							</>
