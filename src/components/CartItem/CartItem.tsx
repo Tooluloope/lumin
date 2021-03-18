@@ -38,7 +38,7 @@ const CartItem = ({ data }: { data: cartItem }) => {
 							<Text cursor="pointer" as="span" px={2}>
 								{data.quantity}
 							</Text>
-							<Text onClick={() => addProductToCart(data.id)} as="span">
+							<Text cursor="pointer" onClick={() => addProductToCart(data.id)} as="span">
 								+
 							</Text>
 						</HStack>
