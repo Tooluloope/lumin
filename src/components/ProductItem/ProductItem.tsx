@@ -1,4 +1,5 @@
 import CartContext from '@/Store/CartStore/cartContext';
+import CurrencyContext from '@/Store/CurrencyStore/CurrencyContext';
 import { TDrawer, TProduct } from '@/types';
 import { Box, Image, Link, VStack, Text, Flex, Button } from '@chakra-ui/react';
 import { useContext } from 'react';
@@ -9,6 +10,7 @@ type TProductItem = Pick<TDrawer, 'onOpen'> & {
 
 const ProductItem = ({ onOpen, product }: TProductItem) => {
 	const { addProductToCart } = useContext(CartContext);
+	const { currency } = useContext(CurrencyContext);
 
 	const handleAddToCart = () => {
 		addProductToCart(product.id);
@@ -41,7 +43,9 @@ const ProductItem = ({ onOpen, product }: TProductItem) => {
 
 			<Flex alignItems="center" justifyContent="center">
 				<Text mr={1}>From:</Text>
-				<Text>NGN&nbsp;{product.price}</Text>
+				<Text>
+					{currency}&nbsp;{product.price}
+				</Text>
 			</Flex>
 			<Flex alignItems="center" justifyContent="center">
 				<Button

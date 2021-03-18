@@ -13,6 +13,7 @@ const CartState: React.FC = ({ children }) => {
 	const removeProductFromCart = (productId: number) => {
 		dispatch({ type: CART_ACTION.REMOVE_PRODUCT, productId });
 	};
+	const totalQuantity = cartState.cart.reduce((prev, cur) => prev + Number(cur.quantity), 0);
 
 	return (
 		<CartContext.Provider
@@ -20,6 +21,7 @@ const CartState: React.FC = ({ children }) => {
 				cart: cartState.cart,
 				addProductToCart,
 				removeProductFromCart,
+				totalQuantity,
 			}}
 		>
 			{children}

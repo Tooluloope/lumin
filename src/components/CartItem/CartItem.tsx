@@ -1,10 +1,12 @@
 import CartContext from '@/Store/CartStore/cartContext';
+import CurrencyContext from '@/Store/CurrencyStore/CurrencyContext';
 import { Box, Flex, VStack, Image, Text, HStack } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { cartItem } from '../../Store/CartStore/types';
 
 const CartItem = ({ data }: { data: cartItem }) => {
 	const { addProductToCart, removeProductFromCart } = useContext(CartContext);
+	const { currency } = useContext(CurrencyContext);
 
 	return (
 		<Flex bg="white" align="center" justify="space-between" p={6} my={5}>
@@ -42,7 +44,7 @@ const CartItem = ({ data }: { data: cartItem }) => {
 						</HStack>
 						<Box fontSize={{ base: '13px' }}>
 							<Text as="span" mr={1}>
-								NGN
+								{currency}
 							</Text>
 							{data.price}
 						</Box>

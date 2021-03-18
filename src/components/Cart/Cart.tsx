@@ -1,6 +1,6 @@
 import CartContext from '@/Store/CartStore/cartContext';
 import { cartItem } from '@/Store/CartStore/types';
-import { Currency, TDrawer, TProduct } from '@/types';
+import { TDrawer, TProduct, Currency } from '@/types';
 import {
 	Box,
 	Text,
@@ -19,19 +19,22 @@ import {
 import { useContext, useMemo } from 'react';
 
 import { CartItem } from '../CartItem';
+import CurrencyContext from '../../Store/CurrencyStore/CurrencyContext';
 
 type TCart = Pick<TDrawer, 'onOpen' | 'isOpen' | 'onClose'> & {
 	data:
 		| {
 				products: TProduct[];
-				currency: Currency;
 		  }
 		| undefined;
 };
 
 const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
+	const keys = Object.keys(Currency);
 	const variant = useBreakpointValue({ base: 'md', lg: 'lg' });
 	const { cart } = useContext(CartContext);
+	const { currency, changeCurrency } = useContext(CurrencyContext);
+
 	const productData = useMemo(() => data?.products, [data]);
 	const cartData = useMemo(() => cart, [cart]);
 
@@ -89,15 +92,21 @@ const Cart = ({ onOpen, isOpen, onClose, data }: TCart) => {
 							fontSize="12px"
 							bg="white"
 							mt={2}
+							onChange={(e) => changeCurrency(e.target.value as Currency)}
+							defaultValue={currency}
 						>
-							<option>NGN</option>
+							{keys.map((key) => (
+								<option value={key as Currency} key={key}>
+									{key}
+								</option>
+							))}
 						</Select>
 					</DrawerHeader>
 					<DrawerBody>
 						{filterObjsInArr && filterObjsInArr.length > 0 ? (
 							<>
 								{filterObjsInArr.map((filteredData) => (
-									<CartItem data={filteredData} />
+									<CartItem key={filteredData.id} data={filteredData} />
 								))}
 							</>
 						) : null}

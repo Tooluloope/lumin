@@ -14,10 +14,12 @@ import {
 	DrawerCloseButton,
 	useDisclosure,
 } from '@chakra-ui/react';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import CartContext from '@/Store/CartStore/cartContext';
 
 const Header = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { totalQuantity } = useContext(CartContext);
 
 	const navbar = useRef<HTMLDivElement | null>(null);
 	const anchorRef = useRef<HTMLDivElement | null>(null);
@@ -143,7 +145,7 @@ const Header = () => {
 					>
 						<Image flexShrink={0} src="/cart.png" alt="cart" w="25px" h="21px" />
 						<Text as="sup" fontSize="14px" fontWeight="normal">
-							3
+							{totalQuantity}
 						</Text>
 					</Button>
 					<Select

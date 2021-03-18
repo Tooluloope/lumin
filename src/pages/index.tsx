@@ -1,5 +1,6 @@
 import { Cart, ProductItem, ProductLoader } from '@/components';
 import { ALL_PRODUCTS } from '@/queries';
+import CurrencyContext from '@/Store/CurrencyStore/CurrencyContext';
 import { useQuery } from '@apollo/client';
 import {
 	Box,
@@ -11,15 +12,16 @@ import {
 	useDisclosure,
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import { Currency, TProduct } from '../types/index';
+import { useContext } from 'react';
+import { TProduct } from '../types/index';
 
 export default function Home() {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { currency } = useContext(CurrencyContext);
 
-	const { loading, error, data } = useQuery<{ products: TProduct[]; currency: Currency }>(
-		ALL_PRODUCTS,
-		{ variables: { currency: Currency.NGN } },
-	);
+	const { loading, error, data } = useQuery<{ products: TProduct[] }>(ALL_PRODUCTS, {
+		variables: { currency },
+	});
 	const variant = useBreakpointValue({ base: true, md: false });
 
 	return (
