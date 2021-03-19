@@ -8,6 +8,7 @@ A Pangaea F.E Challenge built with TypeScript and Next.js that includes all foll
 
 - 📏 **ESLint** — Pluggable JavaScript linter
 - 🧪 **Jest** — For Testing the Application
+- 💇‍♀️ **Chakra-UI** — For Styling the Application
 - 💖 **Prettier** - Opinionated Code Formatter
 - 🐶 **Husky** — Use git hooks with ease
 - 📄 **Commitizen** - Conventional commit messages CLI
