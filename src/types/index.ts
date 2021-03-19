@@ -18,7 +18,6 @@ export type TProduct = {
 // eslint-disable-next-line no-shadow
 export enum Currency {
 	USD = 'USD',
-	AED = 'AED',
 	AFN = 'AFN',
 	ALL = 'ALL',
 	AMD = 'AMD',
