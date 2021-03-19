@@ -1,6 +1,6 @@
 import CartContext from '@/Store/CartStore/cartContext';
 import CurrencyContext from '@/Store/CurrencyStore/CurrencyContext';
-import { Box, Flex, VStack, Image, Text, HStack, Button, CloseButton } from '@chakra-ui/react';
+import { Box, Flex, VStack, Image, Text, HStack, CloseButton } from '@chakra-ui/react';
 import { useContext } from 'react';
 import { cartItem } from '../../Store/CartStore/types';
 
@@ -11,7 +11,15 @@ const CartItem = ({ data }: { data: cartItem }) => {
 	const { currency } = useContext(CurrencyContext);
 
 	return (
-		<Flex bg="white" align="center" pos="relative" justify="space-between" p={6} my={5}>
+		<Flex
+			data-testid="cart-item"
+			bg="white"
+			align="center"
+			pos="relative"
+			justify="space-between"
+			p={6}
+			my={5}
+		>
 			<CloseButton
 				onClick={() => removeProductTotallyFromCart(data.id)}
 				pos="absolute"

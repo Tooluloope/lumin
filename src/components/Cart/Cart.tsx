@@ -1,5 +1,3 @@
-import CartContext from '@/Store/CartStore/cartContext';
-import { cartItem } from '@/Store/CartStore/types';
 import { TDrawer, TProduct, Currency } from '@/types';
 import {
 	Box,
@@ -16,6 +14,8 @@ import {
 	Select,
 	useBreakpointValue,
 } from '@chakra-ui/react';
+import CartContext from '@/Store/CartStore/cartContext';
+import { cartItem } from '@/Store/CartStore/types';
 import { useContext, useMemo } from 'react';
 
 import { CartItem } from '../CartItem';
