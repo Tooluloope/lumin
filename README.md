@@ -2,21 +2,12 @@
   <img src="https://user-images.githubusercontent.com/26466516/107675802-36216b80-6c77-11eb-8db1-4d3407dc53d9.png" alt="Next.js and TypeScript">
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&style=for-the-badge&color=24B36B&labelColor=000000" alt="PRs welcome!" />
-
-  <img alt="License" src="https://img.shields.io/github/license/jpedroschmitz/typescript-nextjs-starter?style=for-the-badge&color=24B36B&labelColor=000000">
-
-  <a href="https://twitter.com/intent/follow?screen_name=jpedroschmitz">
-    <img src="https://img.shields.io/twitter/follow/jpedroschmitz?style=for-the-badge&color=24B36B&labelColor=000000" alt="Follow @jpedroschmitz" />
-  </a>
-</p>
-
 <br>
 
-A TypeScript starter for Next.js that includes all you need to build amazing projects 🔥
+A Pangaea F.E Challenge built with TypeScript and Next.js that includes all following amazing tools 🔥
 
 - 📏 **ESLint** — Pluggable JavaScript linter
+- 🧪 **Jest** — For Testing the Application
 - 💖 **Prettier** - Opinionated Code Formatter
 - 🐶 **Husky** — Use git hooks with ease
 - 📄 **Commitizen** - Conventional commit messages CLI
@@ -27,32 +18,28 @@ A TypeScript starter for Next.js that includes all you need to build amazing pro
 
 ## 🚀 Getting started
 
-The best way to start with this template is using `create-next-app`.
+The best way to start with this template is cloning the app.
 
 ```
-npx create-next-app ts-next -e https://github.com/jpedroschmitz/typescript-nextjs-starter
+git clone https://github.com/Tooluloope/lumin.git
 ```
 
 If you prefer you can clone this repository and run the following commands inside the project folder:
 
 1. `npm install` or `yarn`;
 2. `yarn dev`;
+3. `yarn test` for testing;
+4. `yarn lint` for lint checks;
+5. `yarn type-check` for Type checks;
+6. `yarn format` for prettier formatting;
 
 To view the project open `http://localhost:3000`.
 
-## 🤝 Contributing
+## 🌏 🚀 Additional Links
 
-1. Fork this repository;
-2. Create your branch: `git checkout -b my-new-feature`;
-3. Commit your changes: `git commit -m 'Add some feature'`;
-4. Push to the branch: `git push origin my-new-feature`.
-
-**After your pull request is merged**, you can safely delete your branch.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for more information.
-
+Live Site:    [https://lumin-woad.vercel.app/](https://lumin-woad.vercel.app/)      
+Requirements: [https://pangaea-interviews.now.sh/fe](https://pangaea-interviews.now.sh/fe)      
+GraphQL API:  [https://pangaea-interviews.now.sh/api/graphql](https://pangaea-interviews.now.sh/api/graphql)
 ---
 
-Made with ♥ by João Pedro Schmitz
+Made with ♥ by Adetula Tolulope
