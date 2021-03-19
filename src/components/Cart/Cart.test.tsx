@@ -1,6 +1,6 @@
 import CartContext from '@/Store/CartStore/cartContext';
 import CurrencyContext from '@/Store/CurrencyStore/CurrencyContext';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Currency, TProduct } from '@/types';
 import Cart from './Cart';
 import { cartItem } from '../../Store/CartStore/types';
