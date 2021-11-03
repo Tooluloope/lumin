@@ -40,10 +40,6 @@ To view the project open `http://localhost:3000`.
 
 Live Site:    [https://lumin-woad.vercel.app/](https://lumin-woad.vercel.app/)      
 
-Requirements: [https://pangaea-interviews.now.sh/fe](https://pangaea-interviews.now.sh/fe)     
-
-GraphQL API:  [https://pangaea-interviews.now.sh/api/graphql](https://pangaea-interviews.now.sh/api/graphql)
-
 ---
 
 Made with ♥ by Adetula Tolulope
